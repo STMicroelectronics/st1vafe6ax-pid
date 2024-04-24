@@ -2819,10 +2819,10 @@ int32_t st1vafe6ax_pin_polarity_get(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int1_route_set(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int1_route_t val)
+                                      st1vafe6ax_pin_int_route_t val)
 {
   st1vafe6ax_functions_enable_t functions_enable;
-  st1vafe6ax_pin_int2_route_t  pin_int2_route;
+  st1vafe6ax_pin_int_route_t  pin_int2_route;
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int1_t emb_func_int1;
   st1vafe6ax_pedo_cmd_reg_t pedo_cmd_reg;
@@ -3055,7 +3055,7 @@ int32_t st1vafe6ax_pin_int1_route_set(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int1_route_get(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int1_route_t *val)
+                                      st1vafe6ax_pin_int_route_t *val)
 {
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int1_t emb_func_int1;
@@ -3169,10 +3169,10 @@ int32_t st1vafe6ax_pin_int1_route_get(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int2_route_t val)
+                                      st1vafe6ax_pin_int_route_t val)
 {
   st1vafe6ax_functions_enable_t functions_enable;
-  st1vafe6ax_pin_int1_route_t  pin_int1_route;
+  st1vafe6ax_pin_int_route_t  pin_int1_route;
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int2_t emb_func_int2;
   st1vafe6ax_pedo_cmd_reg_t pedo_cmd_reg;
@@ -3378,7 +3378,7 @@ int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int2_route_get(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int2_route_t *val)
+                                      st1vafe6ax_pin_int_route_t *val)
 {
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int2_t emb_func_int2;
