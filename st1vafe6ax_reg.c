@@ -5328,12 +5328,19 @@ int32_t st1vafe6ax_fifo_timestamp_batch_get(const stmdev_ctx_t *ctx,
 int32_t st1vafe6ax_fifo_batch_counter_threshold_set(const stmdev_ctx_t *ctx,
                                                     uint16_t val)
 {
-  uint8_t buff[2];
+  st1vafe6ax_counter_bdr_reg1_t counter_bdr_reg1;
+  st1vafe6ax_counter_bdr_reg2_t counter_bdr_reg2;
   int32_t ret;
 
-  buff[1] = (uint8_t)(val / 256U);
-  buff[0] = (uint8_t)(val - (buff[1] * 256U));
-  ret = st1vafe6ax_write_reg(ctx, ST1VAFE6AX_COUNTER_BDR_REG1, (uint8_t *)&buff[0], 2);
+  ret = st1vafe6ax_read_reg(ctx, ST1VAFE6AX_COUNTER_BDR_REG1, (uint8_t *)&counter_bdr_reg1, 1);
+
+  if (ret == 0)
+  {
+    counter_bdr_reg2.cnt_bdr_th = (uint8_t)val & 0xFFU;
+    counter_bdr_reg1.cnt_bdr_th = (uint8_t)(val >> 8) & 0x3U;
+    ret = st1vafe6ax_write_reg(ctx, ST1VAFE6AX_COUNTER_BDR_REG1, (uint8_t *)&counter_bdr_reg1, 1);
+    ret += st1vafe6ax_write_reg(ctx, ST1VAFE6AX_COUNTER_BDR_REG2, (uint8_t *)&counter_bdr_reg2, 1);
+  }
 
   return ret;
 }
@@ -5353,8 +5360,8 @@ int32_t st1vafe6ax_fifo_batch_counter_threshold_get(const stmdev_ctx_t *ctx,
   int32_t ret;
 
   ret = st1vafe6ax_read_reg(ctx, ST1VAFE6AX_COUNTER_BDR_REG1, &buff[0], 2);
-  *val = buff[1];
-  *val = (*val * 256U) + buff[0];
+  *val = (uint16_t)buff[0] & 0x3U;
+  *val = (*val * 256U) + (uint16_t)buff[1];
 
   return ret;
 }
