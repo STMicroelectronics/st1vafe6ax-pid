@@ -2785,6 +2785,7 @@ typedef struct
   uint8_t drdy_xl                       : 1;
   uint8_t drdy_gy                       : 1;
   uint8_t drdy_temp                     : 1;
+  uint8_t drdy_ah_bio                   : 1;
 } st1vafe6ax_data_ready_t;
 int32_t st1vafe6ax_flag_data_ready_get(const stmdev_ctx_t *ctx,
                                        st1vafe6ax_data_ready_t *val);
@@ -2986,6 +2987,7 @@ typedef struct
   uint8_t drdy_xl                       : 1;
   uint8_t drdy_gy                       : 1;
   uint8_t drdy_temp                     : 1;
+  uint8_t drdy_ah_bio                   : 1;
   uint8_t fifo_th                       : 1;
   uint8_t fifo_ovr                      : 1;
   uint8_t fifo_full                     : 1;

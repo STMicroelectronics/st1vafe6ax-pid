@@ -1279,6 +1279,7 @@ int32_t st1vafe6ax_flag_data_ready_get(const stmdev_ctx_t *ctx,
   val->drdy_xl = status.xlda;
   val->drdy_gy = status.gda;
   val->drdy_temp = status.tda;
+  val->drdy_ah_bio = status.ah_bioda;
 
   return ret;
 }
@@ -3179,6 +3180,7 @@ int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
   st1vafe6ax_int2_ctrl_t int2_ctrl;
   st1vafe6ax_fsm_int2_t fsm_int2;
   st1vafe6ax_mlc_int2_t mlc_int2;
+  st1vafe6ax_ctrl7_t ctrl7;
   st1vafe6ax_md2_cfg_t md2_cfg;
   st1vafe6ax_ctrl4_t ctrl4;
   int32_t ret;
@@ -3268,6 +3270,13 @@ int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
     int2_ctrl.int2_cnt_bdr = val.fifo_bdr;
     int2_ctrl.int2_emb_func_endop = val.emb_func_stand_by;
     ret = st1vafe6ax_write_reg(ctx, ST1VAFE6AX_INT2_CTRL, (uint8_t *)&int2_ctrl, 1);
+  }
+
+  if (ret == 0)
+  {
+    ret = st1vafe6ax_read_reg(ctx, ST1VAFE6AX_CTRL7, (uint8_t *)&ctrl7, 1);
+    ctrl7.int2_drdy_ah_bio = val.drdy_ah_bio;
+    ret += st1vafe6ax_write_reg(ctx, ST1VAFE6AX_CTRL7, (uint8_t *)&ctrl7, 1);
   }
 
   if (ret == 0)
@@ -3386,6 +3395,7 @@ int32_t st1vafe6ax_pin_int2_route_get(const stmdev_ctx_t *ctx,
   st1vafe6ax_int2_ctrl_t int2_ctrl;
   st1vafe6ax_fsm_int2_t fsm_int2;
   st1vafe6ax_mlc_int2_t mlc_int2;
+  st1vafe6ax_ctrl7_t ctrl7;
   st1vafe6ax_md2_cfg_t md2_cfg;
   st1vafe6ax_ctrl4_t ctrl4;
   int32_t ret;
@@ -3424,6 +3434,11 @@ int32_t st1vafe6ax_pin_int2_route_get(const stmdev_ctx_t *ctx,
     val->fifo_bdr = int2_ctrl.int2_cnt_bdr;
   }
 
+  if (ret == 0)
+  {
+    ret = st1vafe6ax_read_reg(ctx, ST1VAFE6AX_CTRL7, (uint8_t *)&ctrl7, 1);
+    val->drdy_ah_bio = ctrl7.int2_drdy_ah_bio;
+  }
 
   if (ret == 0)
   {
