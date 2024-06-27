@@ -45,7 +45,7 @@ This directory contains the ST1VAFE6AX component drivers.
 
 </div>
 
-<input type="checkbox" id="collapse-section2" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section2" aria-hidden="true">
 <label for="collapse-section2" aria-hidden="true">V1.1.0 / 03-May-2024</label>
 <div>
 
@@ -54,6 +54,18 @@ This directory contains the ST1VAFE6AX component drivers.
 - add ah_bio interrupt/event handling
 - Fix BDR counter regsters get/set APIs
 - unify pin_int1_route and pin_int2_route struct
+
+##
+
+</div>
+
+<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
+<label for="collapse-section3" aria-hidden="true">V2.0.0 / 23-Jun-2024</label>
+<div>
+
+## Main changes
+
+- Add defs for num_phy routines
 
 ##
 
