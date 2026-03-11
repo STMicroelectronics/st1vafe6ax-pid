@@ -3100,10 +3100,10 @@ int32_t st1vafe6ax_pin_polarity_get(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int1_route_set(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int_route_t val)
+                                      st1vafe6ax_pin_int1_route_t val)
 {
   st1vafe6ax_functions_enable_t functions_enable;
-  st1vafe6ax_pin_int_route_t  pin_int2_route;
+  st1vafe6ax_pin_int2_route_t  pin_int2_route;
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int1_t emb_func_int1;
   st1vafe6ax_pedo_cmd_reg_t pedo_cmd_reg;
@@ -3336,7 +3336,7 @@ int32_t st1vafe6ax_pin_int1_route_set(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int1_route_get(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int_route_t *val)
+                                      st1vafe6ax_pin_int1_route_t *val)
 {
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int1_t emb_func_int1;
@@ -3453,10 +3453,10 @@ int32_t st1vafe6ax_pin_int1_route_get(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int_route_t val)
+                                      st1vafe6ax_pin_int2_route_t val)
 {
   st1vafe6ax_functions_enable_t functions_enable;
-  st1vafe6ax_pin_int_route_t  pin_int1_route;
+  st1vafe6ax_pin_int1_route_t  pin_int1_route;
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int2_t emb_func_int2;
   st1vafe6ax_pedo_cmd_reg_t pedo_cmd_reg;
@@ -3668,7 +3668,7 @@ int32_t st1vafe6ax_pin_int2_route_set(const stmdev_ctx_t *ctx,
   *
   */
 int32_t st1vafe6ax_pin_int2_route_get(const stmdev_ctx_t *ctx,
-                                      st1vafe6ax_pin_int_route_t *val)
+                                      st1vafe6ax_pin_int2_route_t *val)
 {
   st1vafe6ax_inactivity_dur_t inactivity_dur;
   st1vafe6ax_emb_func_int2_t emb_func_int2;
@@ -8338,7 +8338,7 @@ int32_t st1vafe6ax_ah_bio_mode_get(const stmdev_ctx_t *ctx,
   * @brief  Configures the equivalent input impedance of the AH_BIO buffers.[set]
   *
   * @param  ctx      read / write interface definitions
-  * @param  val      2400MOhm, 730MOhm, 300MOhm, 255MOhm,
+  * @param  val      2400MOhm, 730MOhm, 300MOhm, 235MOhm,
   * @retval          interface status (MANDATORY: return 0 -> no Error)
   *
   */
@@ -8362,7 +8362,7 @@ int32_t st1vafe6ax_ah_bio_zin_set(const stmdev_ctx_t *ctx,
   * @brief  Configures the equivalent input impedance of the AH_BIO buffers.[get]
   *
   * @param  ctx      read / write interface definitions
-  * @param  val      2400MOhm, 730MOhm, 300MOhm, 255MOhm,
+  * @param  val      2400MOhm, 730MOhm, 300MOhm, 235MOhm,
   * @retval          interface status (MANDATORY: return 0 -> no Error)
   *
   */
@@ -8392,8 +8392,8 @@ int32_t st1vafe6ax_ah_bio_zin_get(const stmdev_ctx_t *ctx,
       *val = ST1VAFE6AX_300MOhm;
       break;
 
-    case ST1VAFE6AX_255MOhm:
-      *val = ST1VAFE6AX_255MOhm;
+    case ST1VAFE6AX_235MOhm:
+      *val = ST1VAFE6AX_235MOhm;
       break;
 
     default:
