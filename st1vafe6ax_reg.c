@@ -6029,11 +6029,11 @@ int32_t st1vafe6ax_fifo_out_raw_get(const stmdev_ctx_t *ctx,
       break;
 
     case 0x03:
-      val->tag = ST1VAFE6AX_TIMESTAMP_TAG;
+      val->tag = ST1VAFE6AX_TEMPERATURE_TAG;
       break;
 
     case 0x04:
-      val->tag = ST1VAFE6AX_TEMPERATURE_TAG;
+      val->tag = ST1VAFE6AX_TIMESTAMP_TAG;
       break;
 
     case 0x05:
